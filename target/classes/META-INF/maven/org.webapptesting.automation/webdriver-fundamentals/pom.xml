@@ -1,0 +1,158 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!-- Basic project configuration/ Project Metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.webapptesting.automation</groupId>   <!-- Group ID for the automation project / Logical group (e.g.,usually company or domain name) -->
+  <artifactId>webdriver-fundamentals</artifactId>   <!-- Artifact ID (name) of the automation project / Unique name of the project/module -->
+  <version>0.0.1-SNAPSHOT</version>                 <!-- Project version / Version number under development 'SNAPSHOT' indicates this is in active development-->
+  
+<!-- ================================================================================================================================================== --> 
+<!-- BUILD SECTION:: Contains plugin management which is used during the build lifecycle to control compilation and test execution -->
+ 
+  <build>
+    <!-- To define the plugin version in your parent POM -->
+    <pluginManagement>
+      <plugins>
+        
+        <!-- ✅ Maven Compiler Plugin: Used to compiles Java source code in the 'src/main/java' and 'src/test/java' folders-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.0</version>
+          <!-- You can optionally specify Java version using <configuration> here -->
+          <!-- Optional: Specify Java version compatibility -->
+          <!--
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+          -->
+        </plugin>
+        
+        <!-- ***************************************************************** -->
+        
+        <!-- ✅ Maven Surefire Plugin for TestNG: Executes TestNG tests as part of the Maven 'test' phase -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.3</version>
+         
+          <!-- This plugin can be configured to use a specific testng.xml file -->
+          <!-- Configuration for running multiple test suites -->
+          <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>master.xml</suiteXmlFile>  <!-- MASTER XML-->
+              <suiteXmlFile>testng.xml</suiteXmlFile>  <!-- TESTNG XML-->
+            </suiteXmlFiles>
+          </configuration>
+         
+        </plugin>
+        
+      </plugins>
+    </pluginManagement>
+  </build>
+ 
+ <!-- *************** DEPENDENCIES SECTION: Libraries required for automation framework *************************** --> 
+ <!-- Dependencies section will go here for TestNG, Selenium, Log4j, etc.  -->
+  <dependencies>
+
+<!-- ================================================================================================================ -->  
+  	<!-- ✅ Selenium WebDriver: for browser automation (latest 4.x version) -->
+    <!-- Includes support used for browser automation (Chrome, Firefox, Edge, Safari, and WebDriverManager) -->
+	
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>4.31.0</version>
+	</dependency>
+	
+<!-- ================================================================================================================ -->
+ 	<!-- ✅ Apache POI - Required to read/write XLS files (Excel 97–2003) -->
+ 	
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>5.3.0</version>
+	</dependency>
+	
+<!-- ================================================================================================================ -->
+	<!-- ✅ Apache POI OOXML - Required to read/write XLSX files/ Supports newer XLSX (Excel 2007+) file format -->
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	    <version>5.3.0</version>
+	</dependency>
+	
+<!-- ================================================================================================================ -->		
+	 <!-- ✅ TestNG - Unit testing framework used for test execution, annotations, and assertions -->
+	
+	<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+	<dependency>
+	    <groupId>org.testng</groupId>
+	    <artifactId>testng</artifactId>
+	    <version>7.11.0</version> 
+	    <scope>test</scope>   <!-- Limit TestNG scope to testing only --> <!-- Only used during test phase -->
+	</dependency>
+	
+<!-- ================================================================================================================ -->	
+	<!-- ✅ SLF4J Simple Logging Facade for Java - For clean and simple console logging during tests -->
+    <!-- Works with Selenium and TestNG logging systems -->
+    <!-- Useful for logging test statuses and debug info in a clean format -->
+    
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-simple</artifactId>
+	    <version>2.0.17</version>
+	    <scope>test</scope>  
+	</dependency>
+	
+<!-- ================================================================================================================= -->	
+	<!-- ✅ ExtentReports - Advanced HTML reporting library for Selenium + TestNG -->
+    <!-- Enables screenshots, color-coded logs, charts, etc. -->
+    
+	<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>5.1.1</version>
+	</dependency>
+
+<!-- ================================================================================================================= -->	
+	<!-- ✅ Log4j2 Dependencies: Used for advanced logging in Java automation frameworks like Selenium + TestNG -->
+	
+	<!-- 🔹 log4j-API: Provides the logging API used in the project -->
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>2.24.3</version>
+	</dependency>
+	
+	<!-- 🔹 log4j-CORE: Provides the core implementation needed to write logs to files, console, etc. -->
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.24.3</version>
+	</dependency>
+<!-- ================================================================================================================= -->	
+
+	<!-- JavaMail API -->
+	<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+	<dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>javax.mail-api</artifactId>
+	    <version>1.6.2</version>
+	</dependency>
+	    
+  </dependencies>
+ 
+  
+</project>

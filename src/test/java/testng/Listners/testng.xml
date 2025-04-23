@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- ========================================================== -->
+<!-- TestNG Suite for OrangeHRM Application                    -->
+<!-- Listener is used to track test events: start, pass, fail  -->
+<!-- ========================================================== -->
+
+<suite name="Suite">
+
+<!-- ====================================================== -->
+<!-- Registering Listener class that implements ITestListener -->
+<!-- This listener logs custom messages on test events         -->
+<!-- ============================================================================== -->
+
+	<listeners>
+		<listener class-name="testng.Listners.MyListener"></listener>
+	</listeners>
+	
+<!-- =============================================================================== -->
+  <test thread-count="5" name="Test">
+    <classes>
+    	<!-- Your test class that contains @Test methods -->
+      <class name="testng.Listners.OrangeHRMListeners"/>
+    </classes>
+  </test> <!-- Test -->
+  
+  
+</suite> <!-- Suite -->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- ================================================================================================================ -->
+<!-- TestNG Suite Configuration File: Used for organizing and executing test classes -->
+<!-- Suite Name: Master Suite -->
+<!-- Purpose: Runs a set of annotated TestNG test classes and integrates an Extent Report listener for reporting -->
+
+<suite name="Master Suite">
+  
+  <listeners>
+	<listener class-name="testng.Listners.ExtentReportManager"></listener>
+  </listeners>
+
+<!-- ================================================================================================================ -->    
+  <test thread-count="5" name="Test">
+	
+    <classes>
+        <class name="testng.Annotations.C1"/>             <!-- Executes test methods from class C1 -->
+        <class name="testng.Annotations.C2"/>             <!-- Executes test methods from class C2 -->
+        <class name="testng.Annotations.AllAnnotations"/> <!-- Demonstrates full usage of TestNG annotations -->
+    </classes>
+    
+  </test> <!-- End of Test Block -->
+  
+</suite> <!-- End of Suite -->

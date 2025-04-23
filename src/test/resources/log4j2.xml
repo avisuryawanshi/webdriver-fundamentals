@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+  ✅ Log4j2 Configuration File
+  Used to manage logging in automation frameworks (e.g., Selenium + TestNG).
+  This configuration supports console logging and rolling file logging.
+-->
+
+<!-- ================================================================================================================= -->
+<Configuration status="INFO"> <!-- Controls internal Log4j2 logging. Set to DEBUG for troubleshooting -->
+	
+<!-- 🔧 Define properties (reusable values) -->	            
+  <Properties>
+    <Property name="basePath">./log</Property> <!-- Changed 'basepath' to 'basePath' -->  <!-- Base folder where log files will be saved -->
+  </Properties>
+ 
+<!-- ================================================================================================================= --> 
+ <Appenders>
+ 
+ 	<!-- 🔹 Console Appender: Prints logs to terminal during execution -->
+    <Console name="Console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <!-- Pattern explanation:
+           %d = timestamp | %t = thread | %level = log level (INFO, DEBUG, etc.)
+           %logger = class name | %msg = actual message | %n = new line -->
+    </Console>
+
+	<!-- ============================================================================================= --> 
+	
+	<!-- 🔹 RollingFile Appender: Writes logs to file with daily or size-based rotation -->
+    <RollingFile name="File" 
+                 fileName="${basePath}/automation.log"                          
+                 filePattern="${basePath}/automation-%d{yyyy-MM-dd}.log.gz">    <!-- Daily rolled file -->
+        
+       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+       
+       <!-- 🔁 Size-based rolling policy: Rolls over log file when it exceeds 5 MB -->
+       <SizeBasedTriggeringPolicy size="5000"/> <!-- Rolls over when file reaches 5 MB -->
+       
+       <!-- ⏰ Optional: Enable to roll files daily instead of by size -->
+       <!-- <TimeBasedTriggeringPolicy />--> <!-- Rolls over daily -->  
+    </RollingFile>
+    
+</Appenders>
+<!-- ================================================================================================================= -->
+  <Loggers>
+  	
+  	<!-- 🔸 Root Logger: Applies to all classes unless overridden -->
+    <Root level="Info">                 <!-- Here you can use multiple log levels:/ Log level can be set to TRACE, DEBUG, INFO, WARN, ERROR, OFF -->
+         <AppenderRef ref="Console" />  <!-- Active: Console output -->
+         <!--  <AppenderRef ref="File"/> Uncomment to enable file logging-->
+    </Root>
+    
+  </Loggers>
+<!-- ================================================================================================================= -->  
+</Configuration>

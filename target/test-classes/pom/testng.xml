@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- 
+  TestNG Suite Configuration
+  Scenario: Execute login test using Page Object Model with PageFactory implementation.
+  Purpose: This test suite runs a login functionality test for OrangeHRM web app.
+-->
+
+<suite name="Login Test Case Suite">
+	  
+	  <test thread-count="5" name="Test">
+	  
+	    <!-- 
+	      This is the test class that uses PageFactory (@FindBy) based Page Object Model.
+	      Uncomment the one you want to run.
+        -->
+	    <classes>
+	      <!-- <class name="pom.LoginTestCaseWithoutPageFactory"/> -->
+	      <class name="pom.LoginTestCaseWithPageFactory"/>
+	    </classes>
+	    
+	  </test> <!-- Test --> <!-- End of Test block -->
+	  
+</suite> <!-- Suite -->     <!-- End of TestNG Suite -->
