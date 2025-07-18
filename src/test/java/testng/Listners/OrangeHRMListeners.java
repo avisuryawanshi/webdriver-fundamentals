@@ -24,6 +24,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import testng.email.SendEmailReport;
+
 public class OrangeHRMListeners {
 
 		WebDriver driver;    
@@ -76,5 +78,14 @@ public class OrangeHRMListeners {
 	    {
 	    	driver.quit();
 	    	System.out.println("✅ Browser closed successfully.");
+	    	System.out.println("🔚 TestNG Suite Execution Completed. Preparing to send report...");
+	    	
+	    	try {
+	    		SendEmailReport.sendReport();
+	        } catch (Exception e) {
+	            System.out.println("❌ Failed to send report after suite.");
+	            e.printStackTrace();
+	        } 
+	    	 
 	    }	
 }

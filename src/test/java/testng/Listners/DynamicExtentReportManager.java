@@ -17,8 +17,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import testng.email.SendEmailReport;
 
-//import testng.email.SendEmailReport;
-
 /**
  * 🔹 ExtentReportManager Listener
  
@@ -152,8 +150,8 @@ public class DynamicExtentReportManager implements ITestListener {
         } 
         catch (Exception e) 
         {
-            e.printStackTrace();
             System.out.println("[ERROR] Failed to send email report.");
+            e.printStackTrace();
         }
     }
 

@@ -19,7 +19,7 @@ import jakarta.mail.internet.MimeMultipart;
 
 public class SendEmailReport {
 
-	public static void sendReport() throws IOException {
+	public static void main(String[] args) throws IOException {
 
 // Sender's email credentials (Use App Password for Gmail)
 // ----------------------------------------------------------------------------------

@@ -3,6 +3,8 @@ package launchBrowser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import testng.email.SendEmailReport;
+
 /*Application run on a single browser
 	• Running from IDE: I can execute the tests directly from my IDE by right-clicking on the test class or method and selecting "Run."
 
@@ -46,5 +48,17 @@ public static void main(String[] args) {
 		// 4) quit browser
 		//driver.close(); //while using this method will get-> java.net.SocketException: Connection reset // Avoids java.net.SocketException: Connection reset error
 		driver.quit();    // Properly closes the entire browser session
-	}
+		
+// Send email ===========================================================================================================
+// Trigger email sending here
+	    try 
+	    {
+	        SendEmailReport.sendReport();  // Email utility class call
+	    } 
+	    catch (Exception e) 
+	    {
+	        System.out.println("[ERROR] Failed to send email report.");
+	        e.printStackTrace();
+	    }
+		}
 }
